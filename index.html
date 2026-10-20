@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MiA de Carvajal</title>
+  <meta name="description" content="Aventura de aprendizaje MiA de Carvajal">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23b8f21a' stroke='%230d3a8a' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+
+    <!-- ===== Carga y bienvenida ===== -->
+    <section id="s-carga" class="pantalla activa" aria-label="Bienvenida">
+      <div class="carga-fondo"></div>
+      <div class="carga-panel">
+        <div class="logo-slot" data-logo="mia"></div>
+        <div class="carga-mascota" id="carga-mascota" aria-hidden="true"></div>
+
+        <div id="carga-estado">
+          <p class="carga-txt" id="carga-txt">Preparando tu aventura…</p>
+          <div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="carga-barra-rol">
+            <div class="barra-llena" id="carga-barra"></div>
+          </div>
+        </div>
+
+        <form id="form-nombre" class="oculto" autocomplete="off">
+          <label for="nombre">¿Cómo te llamas?</label>
+          <input id="nombre" name="nombre" maxlength="60" placeholder="Nombre y apellido" required>
+          <button type="submit" class="btn">Comenzar</button>
+          <p class="nota">Tu nombre aparecerá en tu diploma. Se guarda solo en este navegador.</p>
+        </form>
+
+        <div id="bienvenida" class="oculto">
+          <p class="hola">¡Hola, <b id="nombre-guardado"></b>!</p>
+          <button type="button" class="btn" id="btn-continuar">Continuar</button>
+          <button type="button" class="link" id="btn-cambiar">No soy yo</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Hub ===== -->
+    <section id="s-hub" class="pantalla" aria-label="Mapa de mundos">
+      <img class="capa" id="hub-bg" src="assets/hub/hub_bg.jpg" alt="">
+      <div id="portales"></div>
+      <img class="capa" id="mascota" src="assets/hub/mascota_espalda.png" alt="">
+      <div id="bandera" aria-hidden="true">
+        <div class="mastil"></div>
+        <div class="tela"><div class="tela-emblema" data-logo="carvajal"></div></div>
+        <div class="base"></div>
+      </div>
+
+      <div id="hud">
+        <div id="objetivo" class="panel">
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="19" fill="none" stroke="#9fe7ff" stroke-width="3"/>
+            <circle cx="24" cy="24" r="11" fill="none" stroke="#9fe7ff" stroke-width="3"/>
+            <circle cx="24" cy="24" r="4" fill="#c9f53a"/>
+          </svg>
+          <div><b>Objetivo actual</b><span id="objetivo-txt"></span></div>
+        </div>
+
+        <div id="logo-hud"><div class="logo-slot" data-logo="mia"></div></div>
+
+        <div id="minimapa" aria-hidden="true"></div>
+
+        <div id="progreso" class="panel" role="status">
+          <div class="cara"></div>
+          <div class="prog-col">
+            <div class="prog-fila"><span>Tu progreso</span><b id="prog-pct">0%</b></div>
+            <div class="barra"><div class="barra-llena" id="prog-barra"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="toast" role="alert"></div>
+    </section>
+
+    <!-- ===== Mundo (pantalla provisional: aquí irá el curso) ===== -->
+    <section id="s-mundo" class="pantalla" aria-label="Mundo">
+      <div class="mundo-fondo"></div>
+      <div class="mundo-panel panel">
+        <div class="mundo-emblema" id="mundo-emblema"></div>
+        <p class="mundo-num" id="mundo-num"></p>
+        <h2 id="mundo-titulo"></h2>
+        <p id="mundo-sub"></p>
+        <p class="mundo-aviso">El contenido de este mundo se está preparando.</p>
+        <div class="mundo-botones">
+          <button type="button" class="btn" id="btn-volver">Volver al mapa</button>
+          <button type="button" class="btn btn-prueba oculto" id="btn-completar">Completar mundo (prueba)</button>
+        </div>
+      </div>
+    </section>
+
+    <video id="corte" playsinline muted preload="auto"></video>
+    <div id="flash"></div>
+    <div id="panel-debug" class="oculto"></div>
+  </div>
+</div>
+
+<script src="js/datos.js"></script>
+<script src="js/estado.js"></script>
+<script src="js/iconos.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
